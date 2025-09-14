@@ -1,5 +1,3 @@
-#!/bin/bash
-
 echo "Criando imagens..."
 
 docker build -t bruno-DAM/projeto-backend:1.0 backend/.
