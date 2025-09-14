@@ -1,50 +1,49 @@
 apiVersion: v1
-kind: PersistenVolumeClaim
+kind: PersistentVolumeClaim
 metadata:
   name: mysql-dados
 spec:
-  accessModes: 
-  - ReadWriteOnce
-resources:
-  requests:
-    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
   storageClassName: standard
 
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
+  labels:
+    app: mysql
 spec:
   selector:
     matchLabels:
       app: mysql
-    template:
-      metadata:
-        labels:
-          app: mysql
-      spec:
-        containers:
-        - image: bruno-DAM/projeto-database:1.0
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: bruno-DAM/projeto-database:1.0
+          imagePullPolicy: Always
           args:
-         - "--ignore-db-dir=lost+found"
-         imagePullPolicy: Always
-         name: mysql
-         ports: 
-         - containerPort: 3306
-          name: mysql
-
-        volumeMounts:
-        - name: mysql-dados
-          mountPath: /var/lib/mysql
+            - "--ignore-db-dir=lost+found"
+          ports:
+            - name: mysql
+              containerPort: 3306
+          volumeMounts:
+            - name: mysql-dados
+              mountPath: /var/lib/mysql
       volumes:
-      - name: mysql-dados
-        persistentVolumeClaim:
-          claimName: mysql-dados
+        - name: mysql-dados
+          persistentVolumeClaim:
+            claimName: mysql-dados
 
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -56,18 +55,14 @@ spec:
   selector:
     matchLabels:
       app: php
-    template:
-      metadata:
-        labels:
-          app: php
-      spec:
-        containers:
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      containers:
         - name: php
           image: bruno-DAM/projeto-backend:1.0
           imagePullPolicy: Always
-          ports: 
-          - containerPort: 80
-
-       
-        
-  
+          ports:
+            - containerPort: 80
