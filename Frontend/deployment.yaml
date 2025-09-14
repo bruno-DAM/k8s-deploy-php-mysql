@@ -28,8 +28,13 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: bruno-DAM/projeto-database:1.0
+          image: bruno-dam/projeto-database:1.0
           imagePullPolicy: Always
+          env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "Senha123"
+          - name: MYSQL_DATABASE
+            value: "meubanco"
           args:
             - "--ignore-db-dir=lost+found"
           ports:
@@ -62,7 +67,7 @@ spec:
     spec:
       containers:
         - name: php
-          image: bruno-DAM/projeto-backend:1.0
+          image: bruno-dam/projeto-backend:1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 80
