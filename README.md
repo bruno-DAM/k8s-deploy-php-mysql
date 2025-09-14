@@ -1,6 +1,6 @@
 # k8s-deploy-php-mysql
 
-Aplicação full-stack desenvolvida em kubernetes. 
+Aplicação full-stack desenvolvida em kubernetes. Projeto DIO.me
 
 ### Como usar 
 
