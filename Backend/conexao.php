@@ -17,5 +17,4 @@ if ($conn->connect_error) {
     die("Erro ao se conectar ao banco de dados.");
 }
 
-echo "Conexão concluída!";
 ?>
