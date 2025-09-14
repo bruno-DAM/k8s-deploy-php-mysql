@@ -2,13 +2,13 @@
 
 echo "Criando imagens..."
 
-docker build -t bruno-DAM/projeto-backen:1.0 backend/.
-docker build -t bruno-DAM/projeto-backen:1.0 database/.
+docker build -t bruno-DAM/projeto-backend:1.0 backend/.
+docker build -t bruno-DAM/projeto-backend:1.0 database/.
 
 echo "Realizando o push das imagens..."
 
-docker push bruno-DAM/projeto-backen:1.0 backend/.
-docker push bruno-DAM/projeto-backen:1.0 database/.
+docker push bruno-DAM/projeto-backend:1.0 backend/.
+docker push bruno-DAM/projeto-backend:1.0 database/.
 
 echo "Criando serviços no cluster kubernetes..."
 
