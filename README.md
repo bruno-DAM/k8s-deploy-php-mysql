@@ -11,13 +11,13 @@ git clone https://github.com/bruno-DAM/k8s-deploy-php-mysql
 cd k8s-deploy-php-mysql
 ```
 
-```
+```bash
 # Transforma o script em executável
 
 chmod +x script.sh
 ```
 
-```
+```bash
 ./script.sh
 
 # Consiga o IP da aplicação para acesso
