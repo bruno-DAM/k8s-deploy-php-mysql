@@ -3,6 +3,6 @@ FROM mysql:5.7
 ENV MYSQL_ROOT_PASSWORD=Senha123
 ENV MYSQL_DATABASE=meubanco
 
-COPY sql.sql /docker-entrypoint-initdb.d/
+COPY tabela.sql /docker-entrypoint-initdb.d/
 
 EXPOSE 3306
